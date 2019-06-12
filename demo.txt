@@ -1,0 +1,3 @@
+var fs = require('fs')
+var dirName = process.argv[2] // node file para. para is the third.
+fs.mkdirSync(
