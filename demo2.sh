@@ -1,4 +1,4 @@
-mkdir $1
+tmkdir $1
 echo "Hi HTML" > $1/html.index
 mkdir $1/css
 mkdir $1/js
