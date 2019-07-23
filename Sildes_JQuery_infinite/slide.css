@@ -1,0 +1,30 @@
+#slideSection{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.slideWindow::after{
+    content:'';
+    display: block;
+    padding:150px 200px;
+}
+.slideWindow{
+    position:relative;
+    overflow: hidden;
+}
+.slideWindow>img{
+    position: absolute;
+    top: 0;
+    transition: left 0.3s;
+}
+
+.currentSlide{
+    left: 0;
+    z-index: 1;
+}
+.waitingSlide{
+    left: 400px;
+}
+.leaveSlide {
+    left: -400px;
+}

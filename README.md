@@ -1,5 +1,6 @@
 # YufeiFrontEnd
-A frontend repository of Yufei. Used to store my practice frontend codes. It may be useful for beginners who wants to learn frontend.
+一堆玩具练手项目。
 # Structure:
-A_Simple_JQury: an easy jQuery implemention by native javascript.
-Slides_JQuery: a slide module implemented by JQuery 2.1.
+1. A_Simple_JQury: 模仿JQuery思路写的类选择器。
+2. Slides_JQuery: JQuery写的简单轮播。
+3. Slides_JQuery_infinite:JQuery写的无限轮播。状态机模型。
