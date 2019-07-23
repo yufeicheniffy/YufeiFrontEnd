@@ -1,0 +1,31 @@
+#slideSection{
+    display: flex;
+    justify-content: center;
+}
+.slider{
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.5s;
+}
+.slider>img{
+    flex: none;
+}
+
+.slideWindow{
+    height: 540px;
+    width:860px;
+    overflow: hidden;
+
+}
+.slideModule{
+    width:860px;
+    margin: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.onclick{
+    background-color: grey;
+    color:red;
+}
