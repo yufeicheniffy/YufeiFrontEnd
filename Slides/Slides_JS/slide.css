@@ -1,0 +1,66 @@
+#slideSection{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.slideModule{
+    width: 800px;
+}
+.slideWindow{
+    position:relative;
+    overflow: hidden;
+    width: 100%;
+}
+.slideWindow::after{
+    content:'';
+    display: block;
+    padding-left:100%;
+    padding-top: 75%;
+}
+
+.slideWindow>img{
+    position: absolute;
+    height:100%;
+    width: 100%;
+    top: 0;
+    transition: left 0.3s;
+    object-fit: cover;
+}
+.slideFooter{
+    display: flex;
+    flex-direction: row;
+}
+.slideFooter>.dots{
+    order: 1;
+    flex:1;
+    display: flex;
+    justify-content: center;
+}
+.slideFooter>.preButton{
+    order: 0;
+}
+.slideFooter>.nextButton{
+    order: 2;
+}
+.slideFooter>.dots>span{
+    display: inline-block;
+    height:6px;
+    width: 6px;
+    border-radius: 6px;
+    background-color: grey;
+    margin: 5px;
+    cursor: pointer;
+}
+.slideFooter>.dots>span.active{
+    width:16px;
+}
+.currentSlide{
+    left: 0;
+    z-index: 1;
+}
+.waitingSlide{
+    left: 400px;
+}
+.leaveSlide {
+    left: -400px;
+}

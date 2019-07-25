@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>infinite_slides</title>
+    <link rel="stylesheet" href="slide.css">
+</head>
+<body>
+<section id="slideSection">
+    <div class="slideModule">
+        <div class="slideWindow">
+            <img src="img/1.png" alt=""  class="currentSlide">
+            <img src="img/2.png" alt=""  >
+            <img src="img/3.png" alt=""  >
+            <img src="img/4.png" alt=""  >
+            <img src="img/5.png" alt=""  >
+        </div>
+        <div class="slideFooter">
+            <div class="dots"></div>
+            <span class="preButton">上一页</span>
+            <span class="nextButton">下一页</span>
+        </div>
+        <script>
+            //buttonFactory
+            {
+                for(let i=0;i<document.querySelectorAll(".slideWindow>img").length;i++){
+                    document.querySelector(".slideFooter>.dots").appendChild(document.createElement('span'))
+                }
+                document.querySelector(".slideFooter>.dots>span:first-child").classList.add("active");
+            }
+        </script>
+        </div>
+    </div>
+</section>
+
+<script src="slides.js"></script>
+</body>
+</html>
