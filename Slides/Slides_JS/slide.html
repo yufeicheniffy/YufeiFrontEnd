@@ -38,10 +38,6 @@
             Array.from(document.querySelectorAll(".slideWindow>img")).forEach(img=>img.classList.add("waitingSlide"));
             document.querySelector(".slideWindow>img:first-child").classList.add("currentSlide");
             document.querySelector(".slideWindow>img:first-child").classList.remove("waitingSlide");
-            Array.from(document.querySelectorAll(".waitingSlide")).forEach(img=>
-                img.setAttribute("style",`transform:translateX(${document.querySelector(".currentSlide").clientWidth}px)`))
-
-
         }</script>
     </div>
 </section>

@@ -8,6 +8,7 @@
 }
 .slideModule{
     width: var(--img-size);
+    position: relative;
 }
 .slideWindow{
     position:relative;
@@ -32,30 +33,42 @@
 .slideFooter{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    position:absolute;
+    bottom: 0;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.3);
 }
 .slideFooter>.dots{
     order: 1;
     flex:1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .slideFooter>.preButton{
     order: 0;
+    cursor: pointer;
+    margin: 5px 10px;
 }
 .slideFooter>.nextButton{
     order: 2;
+    cursor: pointer;
+    margin: 5px 10px;
 }
 .slideFooter>.dots>span{
     display: inline-block;
-    height:6px;
-    width: 6px;
+    height:10px;
+    width: 10px;
     border-radius: 6px;
-    background-color: grey;
     margin: 5px;
     cursor: pointer;
+    background-color: #eee;
+    opacity: 0.6;
 }
 .slideFooter>.dots>span.active{
-    width:16px;
+    width:20px;
+    background-color: grey;
 }
 .currentSlide{
     left: 0;
@@ -64,5 +77,4 @@
 .waitingSlide{
     left: 0;
     z-index: 1;
-
 }
