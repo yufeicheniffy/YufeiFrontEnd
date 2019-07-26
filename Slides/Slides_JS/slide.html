@@ -9,30 +9,43 @@
 <section id="slideSection">
     <div class="slideModule">
         <div class="slideWindow">
-            <img src="img/1.png" alt=""  class="currentSlide">
-            <img src="img/2.png" alt=""  >
-            <img src="img/3.png" alt=""  >
-            <img src="img/4.png" alt=""  >
-            <img src="img/5.png" alt=""  >
+            <img src="img/1.png" alt="">
+            <img src="img/2.png" alt="">
+            <img src="img/3.png" alt="">
+            <img src="img/4.png" alt="">
+            <img src="img/5.png" alt="">
         </div>
-        <div class="slideFooter">
-            <div class="dots"></div>
-            <span class="preButton">上一页</span>
-            <span class="nextButton">下一页</span>
-        </div>
-        <script>
-            //buttonFactory
-            {
-                for(let i=0;i<document.querySelectorAll(".slideWindow>img").length;i++){
-                    document.querySelector(".slideFooter>.dots").appendChild(document.createElement('span'))
-                }
-                document.querySelector(".slideFooter>.dots>span:first-child").classList.add("active");
+        <script>//buttonFactory
+        {
+            let slideFooter=document.createElement('div');
+            slideFooter.classList.add("slideFooter");
+            document.querySelector(".slideModule").appendChild(slideFooter);
+            let preButton = document.createElement('span');
+            preButton.classList.add("preButton");
+            preButton.textContent = "上一页";
+            let nextButton = document.createElement('span');
+            nextButton.classList.add("nextButton");
+            nextButton.textContent = "下一页";
+            let dots = document.createElement('div');
+            dots.classList.add("dots");
+            document.querySelector(".slideFooter").appendChild(preButton);
+            document.querySelector(".slideFooter").appendChild(nextButton);
+            document.querySelector(".slideFooter").appendChild(dots);
+            for (let i = 0; i < document.querySelectorAll(".slideWindow>img").length; i++) {
+                document.querySelector(".slideFooter>.dots").appendChild(document.createElement('span'));
             }
-        </script>
-        </div>
+            document.querySelector(".slideFooter>.dots>span:first-child").classList.add("active");
+            Array.from(document.querySelectorAll(".slideWindow>img")).forEach(img=>img.classList.add("waitingSlide"));
+            document.querySelector(".slideWindow>img:first-child").classList.add("currentSlide");
+            document.querySelector(".slideWindow>img:first-child").classList.remove("waitingSlide");
+            Array.from(document.querySelectorAll(".waitingSlide")).forEach(img=>
+                img.setAttribute("style",`transform:translateX(${document.querySelector(".currentSlide").clientWidth}px)`))
+
+
+        }</script>
     </div>
 </section>
-
-<script src="slides.js"></script>
+<script src="Lib/anime.min.js"></script>
+<script src="slide.js"></script>
 </body>
 </html>

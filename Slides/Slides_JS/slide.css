@@ -1,10 +1,13 @@
+:root {
+    --img-size: 800px;
+}
 #slideSection{
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
 .slideModule{
-    width: 800px;
+    width: var(--img-size);
 }
 .slideWindow{
     position:relative;
@@ -56,11 +59,10 @@
 }
 .currentSlide{
     left: 0;
-    z-index: 1;
+    z-index: 2;
 }
 .waitingSlide{
-    left: 400px;
-}
-.leaveSlide {
-    left: -400px;
+    left: 0;
+    z-index: 1;
+
 }
