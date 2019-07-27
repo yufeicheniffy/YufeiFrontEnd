@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>domVisualization</title>
+    <style>
+        .wrapper{
+            position: relative;
+            display: inline-block;
+        }
+        .floatLayer{
+            display: none;
+            border: 1px red solid;
+            position: absolute;
+            left: 100%;
+            top:0;
+            white-space: nowrap;
+        }
+        .floatLayer::before{
+            border: 10px solid transparent;
+            border-left-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+    <button id="clickMe">显示浮层</button>
+    <div class="floatLayer" id="floatL">
+        <input type="checkbox">我是浮层
+    </div>
+</div>
+<script>
+    clickMe.addEventListener('click',function(e){
+    floatL.style.display="block";
+    setTimeout(function(){
+        document.addEventListener("click",function (e){
+            floatL.style.display="none";
+        });
+    },0);
+    })
+    wrapper.onclick=e=>e.stopPropagation();
+</script>
+</body>
+</html>
