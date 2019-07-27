@@ -17,12 +17,23 @@
                 rotate: '0turn',
                 duration: 800,
             },
+            reverseOut:{
+                targets: currentString,
+                translateX: imageWidth,
+                rotate: '0turn',
+                duration: 800,
+            },
             Ready: {
                 targets: waitingString,
                 translateX: imageWidth,
                 rotate: '0turn',
                 duration: 0,
-            }
+            },
+            ReverseReady:{
+                targets: waitingString,
+                translateX: -imageWidth,
+                duration: 0,
+            },
         },
         Slide: {
             In: {
@@ -37,11 +48,22 @@
                 duration: 300,
                 easing:  'linear',
             },
+            reverseOut:{
+                targets: currentString,
+                translateX: imageWidth,
+                duration: 300,
+                easing:  'linear',
+            },
             Ready: {
                 targets: waitingString,
                 translateX: imageWidth,
                 duration: 0,
-            }
+            },
+            ReverseReady:{
+                targets: waitingString,
+                translateX: -imageWidth,
+                duration: 0,
+            },
         },
         Fade: {
             In: {
@@ -83,10 +105,10 @@
                 this.makeCurrentSlide(this.currentDot, this.currentSlide);
             })
             this.$(".slideFooter>.nextButton").addEventListener("click", info => {
-                this.makeCurrentSlide((this.currentSlide + 1) % this.imgs.length, this.currentSlide);
+                this.makeCurrentSlide(this.currentSlide + 1 , this.currentSlide);
             })
             this.$(".slideFooter>.preButton").addEventListener("click", info => {
-                this.makeCurrentSlide((this.currentSlide - 1 + this.imgs.length) % this.imgs.length, this.currentSlide);
+                this.makeCurrentSlide(this.currentSlide - 1  , this.currentSlide);
             })
         }
 
@@ -95,7 +117,13 @@
              * make the indexed img as the current img in the window.
              * @param: index. the index of the img of all imgs.
              */
-            anime(this.anime.Out);
+            let outAni=this.anime.Out;
+            if(indexIn<indexOut&&this.anime.ReverseReady){
+                anime(this.anime.ReverseReady);
+                outAni=this.anime.reverseOut;
+            }
+            indexIn=(indexIn+this.imgs.length)%this.imgs.length;
+            anime(outAni);
             this.$(".slideWindow>.currentSlide").classList.remove("currentSlide");
             this.imgs[indexIn].classList.add("currentSlide");
             this.imgs[indexIn].classList.remove("waitingSlide");
@@ -136,5 +164,5 @@
     }
 
 
-    let slider1 = new Slide(document.getElementById("slideSection"), animationLib.Fade);
+    let slider1 = new Slide(document.getElementById("slideSection"), animationLib.Bounce);
 }
