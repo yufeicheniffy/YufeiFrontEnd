@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <title>domVisualization</title>
     <style>
-        .wrapper{
+        .wrapper {
             position: relative;
             display: inline-block;
         }
-        .floatLayer{
+
+        .floatLayer {
             display: none;
             border: 1px red solid;
             position: absolute;
             left: 100%;
-            top:0;
+            top: 0;
             white-space: nowrap;
+            margin-left: 15px;
         }
-        .floatLayer::before{
+
+        .floatLayer::before {
             border: 10px solid transparent;
-            border-left-color: red;
+            border-right-color: red;
+            content:'';
+            position:absolute;
+            right: 100%;
+        }
+        .floatLayer::after {
+            border: 8px solid transparent;
+            border-right-color: white;
+            content:'';
+            top:2px;
+            position:absolute;
+            right: 100%;
         }
     </style>
 </head>
+
 <body>
 <div class="wrapper" id="wrapper">
     <button id="clickMe">显示浮层</button>
@@ -30,15 +45,28 @@
     </div>
 </div>
 <script>
-    clickMe.addEventListener('click',function(e){
-    floatL.style.display="block";
-    setTimeout(function(){
-        document.addEventListener("click",function (e){
-            floatL.style.display="none";
-        });
-    },0);
+    var floatStatus = false;
+    clickMe.addEventListener('click', function (e) {
+        taggleFloat();
     })
-    wrapper.onclick=e=>e.stopPropagation();
+    wrapper.onclick = e => e.stopPropagation();
+
+    function taggleFloat() {
+        if (floatStatus) {
+            floatL.style.display = "none";
+            floatStatus = false;
+        } else {
+            floatL.style.display = "block";
+            floatStatus = true;
+            console.log(floatStatus)
+            setTimeout(function () {
+                document.addEventListener("click", function (e) {
+                    floatL.style.display = "none";
+                    floatStatus = false;
+                });
+            }, 0);
+        }
+    }
 </script>
 </body>
 </html>
