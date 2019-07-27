@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DomVisualization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .red.active {
+            background: red;
+        }
+
+        .blue.active {
+            background: blue;
+        }
+
+        .green.active {
+            background: green;
+        }
+
+        .yellow.active {
+            background: yellow;
+        }
+
+        .orange.active {
+            background: orange;
+        }
+
+        .purple.active {
+            background: purple;
+        }
+
+        div {
+            border: 1px solid black;
+            padding: 20px;
+            transition: all 0.5s;
+            display: flex;
+            flex: 1;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .red {
+            width: 20vw;
+            height: 20vw;
+        }
+    </style>
+</head>
+<body>
+<div class="red">
+    <div class="blue">
+        <div class="green">
+            <div class="yellow">
+                <div class="orange">
+                    <div class="purple">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let n = 0;
+    let divs = Array.from(document.querySelectorAll('div'));
+    divs.forEach(divElement => {
+        divElement.addEventListener("click", function (event) {
+            setTimeout(function (e) {
+                divElement.classList.add("active");
+            }, n * 500);
+            n+=1;
+        },true)
+    })
+</script>
+</body>
+</html>
