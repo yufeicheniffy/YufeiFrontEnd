@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONP test</title>
+</head>
+<body>
+    <section>
+        <h5>余额为：<span id="amount">&&&amount&&&</span></h5>
+    </section>
+    <button id="button">
+        付款
+    </button>
+    <script>
+    button.addEventListener('click', (e)=>{
+    let script = document.createElement('script')
+    script.src = '/pay'
+    document.body.appendChild(script)
+    script.onload = function(e){ // 状态码是 200~299 则表示成功
+        e.currentTarget.remove()
+        window.location.reload()
+    }
+    script.onerror = function(e){ // 状态码大于等于 400 则表示失败
+        e.currentTarget.remove()
+    }
+})
+    </script>
+</body>
+</html>
