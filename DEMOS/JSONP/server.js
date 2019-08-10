@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response){
 
   /******** 从这里开始看，上面不要看 ************/
 
-  console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
+  console.log('含查询字符串的路径\n' + pathWithQuery)
 
   if(path === '/' || path==="index.html"){
     let amount=fs.readFileSync("amount.db").toString()
@@ -40,7 +40,21 @@ var server = http.createServer(function(request, response){
     response.write("")
     response.end()
   }
-  else{
+  else if(path==='/AJAX'){
+    let amount=fs.readFileSync("amount.db").toString()
+    console.log(amount)
+    let indexpage=fs.readFileSync("ajax.html").toString()
+    indexpage=indexpage.replace("&&&amount&&&",amount)
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write(indexpage)
+    response.end()
+  } else if(path==="/ajaxpay") {
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write("<div> I have been clicked </div>")
+    response.end()}
+  else {
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write('页面错误')

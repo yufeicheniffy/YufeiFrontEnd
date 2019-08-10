@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax test</title>
+</head>
+<body>
+<section>
+    <h5>余额为：<span id="amount">&&&amount&&&</span></h5>
+</section>
+<button id="button">
+    付款
+</button>
+<script>
+    button.onclick = () => {
+
+        let f1 = new XMLHttpRequest();
+        f1.open('GET', '/ajaxpay');
+        f1.onreadystatechange = function (e) {
+            if (f1.readyState === 4) {
+                let newElement= document.createElement("div")
+                newElement.innerHTML=f1.response;
+                document.body.appendChild(newElement);
+            }
+        }
+        f1.send()
+    }
+</script>
+</body>
+</html>
