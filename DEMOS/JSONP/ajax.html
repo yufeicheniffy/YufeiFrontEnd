@@ -15,6 +15,7 @@
     button.onclick = () => {
         let f1 = new XMLHttpRequest();
         f1.open('GET', '/ajaxpay');
+        f1.send();
         f1.onreadystatechange = function (e) {
             if (f1.readyState === 4) {
                 let newElement= document.createElement("div")
@@ -22,7 +23,7 @@
                 document.body.appendChild(newElement);
             }
         }
-        f1.send()
+
     }
 </script>
 </body>
