@@ -1,4 +1,5 @@
 var JQuery=function(nodeOrSelector){
+    //selector
     let nodeList={};
     if(typeof nodeOrSelector ==='string'){
         // console.log("string para")
@@ -47,5 +48,28 @@ var JQuery=function(nodeOrSelector){
     }
     return nodeList;
 }
-
+JQuery.ajax=    //ajax
+    function f(url,method,body={},headers={}) {
+    return new Promise(function(resolve, reject){
+        let xhr=new XMLHttpRequest();
+        xhr.open(method,url);
+        for (let header in headers){
+            xhr.setRequestHeader(header,headers[header]);
+        }
+        xhr.onreadystatechange=function f(){
+            if(xhr.status>=200&&xhr.status<300){
+                resolve.call(undefined,xhr.responseText);
+            }
+            else if(xhr.onreadystatechange>300){
+                reject.call(undefined,xhr.response);
+            }
+        }
+        if(method.toUpperCase()==="POST"){
+            xhr.send(body);
+        }
+        else{
+            xhr.send();
+        }
+    })
+}
 window.$=JQuery;
