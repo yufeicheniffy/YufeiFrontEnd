@@ -1,5 +1,4 @@
 //Slide Builder
-{
     let currentString = ".slideWindow>.currentSlide"
     let waitingString = ".slideWindow>.waitingSlide"
     let imageWidth = document.querySelector(".slideWindow>img").clientWidth;
@@ -88,6 +87,7 @@
 
     class Slide {
         constructor(root, animationLib) {
+            this.init();
             this.$ = root.querySelector.bind(root); //encapsulate selector
             this.$$ = root.querySelectorAll.bind(root);//encapsulate selectorAll
             this.imgs = Array.from(this.$$(".slideWindow>img"));// the Array of img elements
@@ -110,6 +110,31 @@
             this.$(".slideFooter>.preButton").addEventListener("click", info => {
                 this.makeCurrentSlide(this.currentSlide - 1  , this.currentSlide);
             })
+        }
+        //init HTML elements
+        init(){
+            console.log('init successed')
+                let slideFooter=document.createElement('div');
+                slideFooter.classList.add("slideFooter");
+                document.querySelector(".slideModule").appendChild(slideFooter);
+                let preButton = document.createElement('span');
+                preButton.classList.add("preButton");
+                preButton.textContent = "上一页";
+                let nextButton = document.createElement('span');
+                nextButton.classList.add("nextButton");
+                nextButton.textContent = "下一页";
+                let dots = document.createElement('div');
+                dots.classList.add("dots");
+                document.querySelector(".slideFooter").appendChild(preButton);
+                document.querySelector(".slideFooter").appendChild(nextButton);
+                document.querySelector(".slideFooter").appendChild(dots);
+                for (let i = 0; i < document.querySelectorAll(".slideWindow>img").length; i++) {
+                    document.querySelector(".slideFooter>.dots").appendChild(document.createElement('span'));
+                }
+                document.querySelector(".slideFooter>.dots>span:first-child").classList.add("active");
+                Array.from(document.querySelectorAll(".slideWindow>img")).forEach(img=>img.classList.add("waitingSlide"));
+                document.querySelector(".slideWindow>img:first-child").classList.add("currentSlide");
+                document.querySelector(".slideWindow>img:first-child").classList.remove("waitingSlide");
         }
 
         makeCurrentSlide(indexIn, indexOut) {
@@ -162,7 +187,3 @@
             return this.spans.indexOf(this.$(".dots>span.active"));
         }
     }
-
-
-    let slider1 = new Slide(document.getElementById("slideSection"), animationLib.Bounce);
-}

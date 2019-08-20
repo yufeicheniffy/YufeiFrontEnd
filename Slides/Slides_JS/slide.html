@@ -12,36 +12,15 @@
             <img src="img/1.png" alt="">
             <img src="img/2.png" alt="">
             <img src="img/3.png" alt="">
-            <img src="img/4.png" alt="">
+           <img src="img/4.png" alt="">>
             <img src="img/5.png" alt="">
         </div>
-        <script>//buttonFactory
-        {
-            let slideFooter=document.createElement('div');
-            slideFooter.classList.add("slideFooter");
-            document.querySelector(".slideModule").appendChild(slideFooter);
-            let preButton = document.createElement('span');
-            preButton.classList.add("preButton");
-            preButton.textContent = "上一页";
-            let nextButton = document.createElement('span');
-            nextButton.classList.add("nextButton");
-            nextButton.textContent = "下一页";
-            let dots = document.createElement('div');
-            dots.classList.add("dots");
-            document.querySelector(".slideFooter").appendChild(preButton);
-            document.querySelector(".slideFooter").appendChild(nextButton);
-            document.querySelector(".slideFooter").appendChild(dots);
-            for (let i = 0; i < document.querySelectorAll(".slideWindow>img").length; i++) {
-                document.querySelector(".slideFooter>.dots").appendChild(document.createElement('span'));
-            }
-            document.querySelector(".slideFooter>.dots>span:first-child").classList.add("active");
-            Array.from(document.querySelectorAll(".slideWindow>img")).forEach(img=>img.classList.add("waitingSlide"));
-            document.querySelector(".slideWindow>img:first-child").classList.add("currentSlide");
-            document.querySelector(".slideWindow>img:first-child").classList.remove("waitingSlide");
-        }</script>
     </div>
 </section>
 <script src="Lib/anime.min.js"></script>
 <script src="slide.js"></script>
+<script>
+    let slider1 = new Slide(document.getElementById("slideSection"), animationLib.Slide);
+</script>
 </body>
 </html>
