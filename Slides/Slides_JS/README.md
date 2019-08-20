@@ -1,6 +1,7 @@
 #使用范例
 1. 将slide.js下载并放入项目
 2. 将anime.min.js下载并放入项目
+3. 将slide.css 下载并引入
 ```HTML
 HTML:
 <section id="slideSection">
